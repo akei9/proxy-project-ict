@@ -5,4 +5,4 @@ Proxy app analyzing HTTP traffic between web browser and server written in Java 
 By processing information from HTTP headers we determine what type of data is downloaded (text, image etc.). After that we are dynamically count all traffic and show results on real-time chart.
 
 **External libraries used in project:**	
-	- JFreeChart
+- JFreeChart
