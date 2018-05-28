@@ -12,7 +12,6 @@ public class Proxy {
     private static ServerSocket socket;
 
     public static void init(int p) {
-	
         port = p;
 		
         try {
