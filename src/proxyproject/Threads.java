@@ -4,7 +4,6 @@ import java.net.*;
 import java.io.*;
 
 public class Threads implements Runnable { 
-	
     private final Socket client;
     public static int dataTransfer;
     public static int transferSum;
@@ -19,7 +18,6 @@ public class Threads implements Runnable {
 
     @Override
     public void run() {
-
         Socket server = null;
         HttpRequest request = null;
         HttpResponse response = null;
@@ -63,36 +61,28 @@ public class Threads implements Runnable {
                 transferSum += dataTransfer;
 
                 if("text".equals(response.type)) {
-//                        textTransfer += dataTransfer;
                     textTransfer = dataTransfer;
                 }
                 else if("application".equals(response.type)) {
-//                        appTransfer += dataTransfer;
                     appTransfer = dataTransfer;
                 }
                 else if("image".equals(response.type)) {
-//                        imageTransfer += dataTransfer;
                     imageTransfer = dataTransfer;
                 }
                 else if("video".equals(response.type)) {
                     videoTransfer += dataTransfer;
                 }
 
-//                            System.out.println("Dane: " + dataTransfer);
                 System.out.println("Text data: " + textTransfer + " bytes");
                 System.out.println("App data: " + appTransfer + " bytes");
                 System.out.println("Image data: " + imageTransfer + " bytes");
                 System.out.println("Video data: " + videoTransfer + " bytes");
                 System.out.println("Data summary: " + transferSum + " bytes");
-
             }
-
             client.close();
             server.close();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 }
