@@ -3,7 +3,6 @@ package proxyproject;
 import java.io.*;
 
 public class HttpResponse {
-    
     final static String CRLF = "\r\n";
     final static int BUF_SIZE = 8192;
     final static int MAX_OBJECT_SIZE = 300000;
@@ -17,9 +16,7 @@ public class HttpResponse {
     private int length = -1;
     
     public HttpResponse(BufferedReader fromServer) {
-
         boolean gotStatusLine = false;
-
         try {
             String line = fromServer.readLine();
             
@@ -41,10 +38,8 @@ public class HttpResponse {
                     String[] tmp3 = tmp2.split("/");
                     type = tmp3[0];
                 }
-
                 line = fromServer.readLine();
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -57,10 +52,8 @@ public class HttpResponse {
             if (length == -1) loop = true;
 
             while (bytesRead < length || loop) {
-
                 int res = fromServer.read(buf, 0, BUF_SIZE);
                 if (res == -1) break;
-
                 for (int i = 0;i < res && (i + bytesRead) < MAX_OBJECT_SIZE;i++) 
                     body[bytesRead + i] = (byte) (buf[i] & 0x00FF);
 
@@ -95,5 +88,4 @@ public class HttpResponse {
     	res += CRLF;
     	return res;
     }
-    
 }
