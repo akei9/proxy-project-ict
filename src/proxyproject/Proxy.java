@@ -5,7 +5,6 @@ import java.io.*;
 import org.jfree.ui.RefineryUtilities;
 
 public class Proxy {
-    
     /** Proxy ports */
     private static int port;
     /** Client socket */
@@ -13,7 +12,6 @@ public class Proxy {
 
     public static void init(int p) {
         port = p;
-		
         try {
             socket = new ServerSocket(port);
         } catch (IOException e) {
@@ -21,11 +19,9 @@ public class Proxy {
                 e.printStackTrace();
                 System.exit(1);
         }
-  	
     }
 
     public static void main(String args[]) {
-	
         int port = 8080;
         init(port);
         Socket client = null;
@@ -45,6 +41,5 @@ public class Proxy {
                 continue;
             }
         }
-
     }
 }
