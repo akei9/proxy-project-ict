@@ -3,7 +3,6 @@ package proxyproject;
 import java.io.*;
 
 public class HttpRequest {
-    
     final static String CRLF = "\r\n";
     final static int HTTP_PORT = 80;
     String method;
@@ -14,9 +13,7 @@ public class HttpRequest {
     private int port;
 
     public HttpRequest(BufferedReader from) {
-	
     	String firstLine = "";
-	
         try {
             firstLine = from.readLine();
             String[] tmp = firstLine.split(" ");
@@ -25,13 +22,10 @@ public class HttpRequest {
             method = tmp[0]; /* method GET */
             URI =  tmp[1]; /* URI */
             version =  tmp[2]; /* HTTP version */
-
             try {
                 String line = from.readLine();
                 while (line.length() != 0) {
-                    
                     headers += line + CRLF;
-                    
                     if (line.startsWith("Host:")) {
                         tmp = line.split(" ");
                         if (tmp[1].indexOf(':') > 0) {	//  "Host :" or "Host:"
@@ -42,7 +36,6 @@ public class HttpRequest {
                             host = tmp[1];
                             port = HTTP_PORT;
                         }
-                        
                     }
                     line = from.readLine();
                 }
@@ -52,7 +45,6 @@ public class HttpRequest {
 	} catch (IOException e) {
             e.printStackTrace();
 	}
-    
     }
 
     public String getHost() {
@@ -72,5 +64,4 @@ public class HttpRequest {
     	req += CRLF;
 	return req;
     } 
-
 }
